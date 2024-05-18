@@ -1,0 +1,36 @@
+# Ignore Python cache and compiled files
+*.pyc
+__pycache__/
+
+# Ignore virtual environments
+venv/
+env/
+
+# Ignore IDE and editor directories and files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore local configuration files
+*.env
+.env.local
+
+# Ignore database files
+*.db
+
+# Ignore Django static files
+/staticfiles/
+/mediafiles/
+
+/node_modules/
+
+# Ignore Docker files
+.dockerignore
+Dockerfile
+
+# Ignore log files
+*.log
+
+# Ignore other system files
+.DS_Store
