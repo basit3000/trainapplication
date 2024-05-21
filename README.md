@@ -11,9 +11,9 @@ NOTE: This project is currently being worked on and if anyone wants to contribut
 
 1. **Clone the repository**
 
-    '''sh
+    ```sh
     git clone https://github.com/your-username/your-repo-name.git
-    '''
+    ```
 
 2. **Navigate to the Project Directory**
 
@@ -23,9 +23,9 @@ NOTE: This project is currently being worked on and if anyone wants to contribut
 
 3. **Build the Docker container**
 
-    '''sh
+    ```sh
     docker build -t django-project .
-    '''
+    ```
 
 4. **Run the Docker Container**
     
