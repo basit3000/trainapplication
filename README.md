@@ -24,13 +24,13 @@ NOTE: This project is currently being worked on and if anyone wants to contribut
 3. **Build the Docker container**
 
     ```sh
-    docker build -t django-project .
+    docker build -t trainapplication .
     ```
 
 4. **Run the Docker Container**
     
     ```sh
-    docker run -d -p 8000:8000 django-project
+    docker run -d -p 8000:8000 trainapplication
     ```
 
 # Steps for Manual Django setup and to run the server:
