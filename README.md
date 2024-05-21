@@ -12,7 +12,7 @@ NOTE: This project is currently being worked on and if anyone wants to contribut
 1. **Clone the repository**
 
     ```sh
-    git clone https://github.com/your-username/your-repo-name.git
+    git clone https://github.com/basit3000/trainapplication.git
     ```
 
 2. **Navigate to the Project Directory**
@@ -40,7 +40,7 @@ NOTE: This project is currently being worked on and if anyone wants to contribut
 1. **Clone the Repository**
 
     ```sh
-    git clone https://github.com/basit3000/Group-Studies-Project-.git
+    git clone https://github.com/basit3000/trainapplication.git
     ```
 
 2. **Navigate to the Project Directory**
