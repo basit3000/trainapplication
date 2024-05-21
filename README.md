@@ -29,9 +29,9 @@ NOTE: This project is currently being worked on and if anyone wants to contribut
 
 4. **Run the Docker Container**
     
-    '''sh
+    ```sh
     docker run -d -p 8000:8000 django-project
-    '''
+    ```
 
 # Steps for Manual Django setup and to run the server:
 
