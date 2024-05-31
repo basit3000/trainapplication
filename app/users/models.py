@@ -15,7 +15,13 @@ class CustomUserManager(BaseUserManager):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
 
+        if extra_fields.get('date_of_birth') is None:
+            raise ValueError('The date_of_birth field must be set')
+        
         return self.create_user(email, password, **extra_fields)
+
+    def get_by_natural_key(self, email):
+        return self.get(email=email)
 
 class CustomUser(AbstractBaseUser):
     first_name = models.CharField(max_length=200)
@@ -27,8 +33,16 @@ class CustomUser(AbstractBaseUser):
     date_of_birth = models.DateField()
     created = models.DateTimeField(auto_now_add=True)
 
+    objects = CustomUserManager()
+
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'date_of_birth']
 
     def __str__(self):
         return self.email
+    
+    def has_perm(self, perm, obj=None):
+        return self.is_superuser
+
+    def has_module_perms(self, app_label):
+        return self.is_superuser
