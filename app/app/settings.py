@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     #custom
     'app',
     'home',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -102,6 +103,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+#Using custom User model class
+
+AUTH_USER_MODEL = 'users.CustomUser'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
