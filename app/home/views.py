@@ -3,9 +3,11 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url='/admin')
 def home(request):
     return render(request, 'home/welcome.html',{})
 
 @login_required(login_url='/admin')
 def authorized(request):
     return render(request, 'home/authorized.html', {})
+

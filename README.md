@@ -1,4 +1,4 @@
-NOTE: This project is currently being worked on and if anyone wants to contribute to it, feel free to. It's very casual and mostly for practicing.
+NOTE: This project is currently being worked on and if anyone wants to contribute to it, feel free to. It's very casual and mostly for practicing. {Current progress; login functionality has been added but not all templates have been done yet so there might be issues with it}
 
 # Train application
 
