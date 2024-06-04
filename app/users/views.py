@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
 from .forms import CustomUserCreationForm
+from django.contrib.auth.decorators import login_required
 
 class UserRegisterView(View):
     form_class = CustomUserCreationForm
@@ -18,3 +19,7 @@ class UserRegisterView(View):
             form.save()
             return redirect('login')  # Redirect to login page after successful registration
         return render(request, self.template_name, {'form': form})
+    
+@login_required
+def profile(request):
+    return render(request, 'users/profile.html')
