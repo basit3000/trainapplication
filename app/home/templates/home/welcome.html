@@ -1,11 +1,9 @@
-<html>
+{% extends "base.html" %}
 
-    <header>
-        <title>Train Application</title>
-    </header>
+{% block title %}Home{% endblock %}
 
-    <body>
-        <h1>These are the available train ticket list</h1>
+{% block content %}
+<h1>These are the available train ticket list</h1>
         <ul>
             <li>1 hour single ticket</li>
             <li>4-way ticket</li>
@@ -14,6 +12,4 @@
             <li>49 euro Deutschland D-ticket</li>
             <li>1 year ticket</li>
         </ul>
-    </body>
-    
-</html>
+{% endblock %}
