@@ -4,4 +4,10 @@
 <h2>User Profile</h2>
 <p>Welcome, {{ user.first_name }} {{ user.last_name }}!</p>
 
+<h2>What would you like to do?</h2>
+<p>Check out our Home page <a href="{% url 'home' %}">here</a></p>
+<p>Change password: <a href="{% url 'password_change' %}">here</a></p>
+<p>View data: <a href="{% url 'data' %}"> here </a></p>
+
+
 {% endblock %}

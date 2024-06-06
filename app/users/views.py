@@ -23,3 +23,7 @@ class UserRegisterView(View):
 @login_required
 def profile(request):
     return render(request, 'users/profile.html')
+
+@login_required
+def data(request):
+    return render(request, 'users/data.html')
