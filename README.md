@@ -85,3 +85,9 @@ NOTE: This project is currently being worked on and if anyone wants to contribut
 
     ```sh
     python app/manage.py runserver
+
+## License
+
+This project is licensed under the MIT License.
+
+Feel free to contribute and make improvements to this script. If you encounter any issues, please open an issue on the GitHub repository.
