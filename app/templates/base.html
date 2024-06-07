@@ -8,8 +8,10 @@
 <body>
     <header>
         <nav>
-            <ul>
+            <ul class="nav-left">
                 <li><a href="{% url 'home' %}">Home</a></li>
+            </ul>
+            <ul class="nav-right">
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'profile' %}">Profile</a></li>
                     <li>
@@ -24,6 +26,8 @@
                 {% endif %}
             </ul>
         </nav>
+        
+        
     </header>
     <main>
         {% block content %}
