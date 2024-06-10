@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import View
 from .forms import CustomUserCreationForm
 from django.contrib.auth.decorators import login_required
+from .models import CustomUser
 
 class UserRegisterView(View):
     form_class = CustomUserCreationForm
@@ -26,4 +27,5 @@ def profile(request):
 
 @login_required
 def data(request):
-    return render(request, 'users/data.html')
+    user_tickets = request.user.usertickets_set.all()
+    return render(request, 'users/data.html', {'user_tickets': user_tickets})

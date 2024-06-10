@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
+from tickets.models import Tickets, UserTickets
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -32,6 +33,7 @@ class CustomUser(AbstractBaseUser):
     email = models.EmailField(unique=True)
     date_of_birth = models.DateField()
     created = models.DateTimeField(auto_now_add=True)
+    tickets = models.ManyToManyField(Tickets, through=UserTickets, blank=True)
 
     objects = CustomUserManager()
 
