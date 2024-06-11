@@ -4,6 +4,7 @@ class Tickets(models.Model):
     name = models.CharField(max_length=24)
     text = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
+    duration = models.IntegerField(help_text="Duration in days", default=1)
 
     def __str__(self):
         return self.name

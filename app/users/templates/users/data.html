@@ -7,12 +7,12 @@
     <p>Email: {{ user.email }}</p>
     <p>Date of birth: {{ user.date_of_birth }}</p>
     <p>Last accessed: {{ user.last_login }}</p>
-    
+    <p>Tickets: </p>
     <ul>
         {% for user_ticket in user.usertickets_set.all %}
             <li>{{ user_ticket.ticket.name }} - Issue Date: {{ user_ticket.issue_date }} - Expiry Date: {{ user_ticket.expiry_date }}</li>
         {% empty %}
-            <li>No tickets available.</li>
+            <li>No ticket available.</li>
         {% endfor %}
     </ul>
 {% endblock %}
