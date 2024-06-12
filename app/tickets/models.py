@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 class Tickets(models.Model):
     name = models.CharField(max_length=24)
@@ -15,4 +16,8 @@ class UserTickets(models.Model):
     issue_date = models.DateField()
     expiry_date = models.DateField()
 
+    def __str__(self):
+        return self.ticket.name
     
+    def is_active(self):
+        return self.expiry_date > timezone.now().date()

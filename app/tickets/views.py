@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Tickets, UserTickets
 from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView
 from .forms import BuyTicketsForm
 from django.utils.timezone import now
 from datetime import timedelta
+from django.utils import timezone
 
 
 def list(request):
@@ -17,16 +18,29 @@ class TicketsCreateView(CreateView):
     success_url = "/tickets/tickets"
 
 @login_required
-def buy_ticket(request):
+def buy_tickets(request):
     if request.method == 'POST':
         form = BuyTicketsForm(request.POST)
         if form.is_valid():
-            user_ticket = form.save(commit=False)
-            user_ticket.user = request.user
-            user_ticket.issue_date = now().date()
-            user_ticket.expiry_date = user_ticket.issue_date + timedelta(days=user_ticket.ticket.duration)  
-            user_ticket.save()
-            return redirect('profile')  
+            ticket = form.cleaned_data['ticket']
+            return redirect('buy_tickets_with_id', ticket_id=ticket.id)
     else:
         form = BuyTicketsForm()
     return render(request, 'tickets/tickets_buy.html', {'form': form})
+
+@login_required
+def buy_tickets_with_id(request, ticket_id):
+    ticket = get_object_or_404(Tickets, pk=ticket_id)
+    user = request.user
+    active_tickets = UserTickets.objects.filter(user=user, ticket=ticket, expiry_date__gt=timezone.now().date())
+    if active_tickets.exists():
+        return render(request, 'tickets/error_page.html', {'message': 'You already have an active ticket of this type.'})
+    issue_date = timezone.now().date()
+    expiry_date = issue_date + timedelta(days=ticket.duration)
+    user_ticket = UserTickets.objects.create(
+        user=user,
+        ticket=ticket,
+        issue_date=issue_date,
+        expiry_date=expiry_date
+    )
+    return render(request, 'tickets/tickets_success.html', {'message': 'You have successfully bought', 'ticket': user_ticket.ticket.name})

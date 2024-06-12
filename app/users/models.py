@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
 from tickets.models import Tickets, UserTickets
+from django.utils import timezone
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -48,3 +49,7 @@ class CustomUser(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return self.is_superuser
+    
+    def can_buy_tickets(self, tickets):
+        active_tickets = self.usertickets_set.filter(tickets=tickets, expiry_date__gt=timezone.now().date())
+        return not active_tickets.exists()
