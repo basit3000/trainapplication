@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 
-<head> Error </head>
+{% block title %}Error{% endblock %}
 {% block content %}
-<h1>Error</h1>
-<p> {{ message }} </p>
+    <h1>Error</h1>
+    <p> {{ message }} </p>
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript">
+    setTimeout(function(){
+        window.location.href = "{% url 'profile' %}"; 
+    }, 5000); 
+</script>
 {% endblock %}

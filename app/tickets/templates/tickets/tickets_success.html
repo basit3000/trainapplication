@@ -1,7 +1,14 @@
 {% extends "base.html" %}
 
-<head> Success </head>
 {% block content %}
 <h1>Successfully bought ticket</h1>
 <p> {{ message }} {{ ticket }} </p>
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript">
+    setTimeout(function(){
+        window.location.href = "{% url 'profile' %}"; 
+    }, 5000); 
+</script>
 {% endblock %}
