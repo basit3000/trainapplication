@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+<p> {{tickets.name}} </p>
+<a href="{% url 'tickets_delete' ticket_id=tickets.id %}">Delete</a>
+
+{% endblock %}

@@ -6,7 +6,19 @@ from .forms import BuyTicketsForm
 from django.utils.timezone import now
 from datetime import timedelta
 from django.utils import timezone
+from django.views.generic.edit import DeleteView
+from django.http import Http404
 
+class TicketsDeleteView(DeleteView):
+    model = Tickets
+    success_url = 'tickets/tickets_success.html'
+
+def detail(request, ticket_id):
+    try:
+        tickets = Tickets.objects.get(pk=ticket_id)
+    except Tickets.DoesNotExist:
+        raise Http404("Ticket doesn't exist")
+    return render(request, "tickets/tickets_detail.html", {'tickets': tickets})
 
 def list(request):
     all_tickets = Tickets.objects.all()
@@ -44,3 +56,4 @@ def buy_tickets_with_id(request, ticket_id):
         expiry_date=expiry_date
     )
     return render(request, 'tickets/tickets_success.html', {'message': 'You have successfully bought', 'ticket': user_ticket.ticket.name})
+
