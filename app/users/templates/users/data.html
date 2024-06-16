@@ -10,7 +10,7 @@
     <p>Tickets: </p>
     <ul>
         {% for user_ticket in user_tickets %}
-            <li>{{ user_ticket.ticket.name }} - Issue Date: {{ user_ticket.issue_date }} - Expiry Date: {{ user_ticket.expiry_date }}</li>
+            <li>{{ user_ticket.ticket.name }} - Issue Date: {{ user_ticket.issue_date }} - Expiry Date: {{ user_ticket.expiry_date }} - <a href="{% url 'tickets_delete' pk=user_ticket.id %}">Delete ticket</a>
         {% empty %}
             <li>No ticket available.</li>
         {% endfor %}

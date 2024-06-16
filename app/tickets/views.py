@@ -8,10 +8,12 @@ from datetime import timedelta
 from django.utils import timezone
 from django.views.generic.edit import DeleteView
 from django.http import Http404
+from django.urls import reverse_lazy
 
 class TicketsDeleteView(DeleteView):
-    model = Tickets
-    success_url = 'tickets/tickets_success.html'
+    model = UserTickets
+    template_name = 'tickets/tickets_delete.html'
+    success_url = reverse_lazy('tickets_success_delete')
 
 def detail(request, ticket_id):
     try:
@@ -23,6 +25,9 @@ def detail(request, ticket_id):
 def list(request):
     all_tickets = Tickets.objects.all()
     return render(request, 'tickets/tickets_list.html', {'tickets': all_tickets})
+
+def success(request):
+    return render(request, 'tickets/tickets_success_delete.html')
 
 class TicketsCreateView(CreateView):
     model = Tickets
