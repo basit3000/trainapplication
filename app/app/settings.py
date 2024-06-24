@@ -112,6 +112,8 @@ AUTH_USER_MODEL = 'users.CustomUser'
 #Redirect user to here after logging in 
 
 LOGIN_REDIRECT_URL = '/users/profile'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/

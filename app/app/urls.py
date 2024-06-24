@@ -16,12 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .views import CustomPasswordChangeView, CustomPasswordChangeDoneView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('users/', include('users.urls')),  
     path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/change_password/', CustomPasswordChangeView.as_view(), name='password_change'),
+    path('accounts/change_password/done/', CustomPasswordChangeDoneView.as_view(), name='password_change_done'),
     path('tickets/', include('tickets.urls')),
     path('locations/', include('locations.urls')),
 ]
