@@ -1,4 +1,5 @@
-NOTE: This project is currently being worked on and if anyone wants to contribute to it, feel free to. It's very casual and mostly for practicing. {Current progress; functioning users purchasing tickets defined by the admin in the database.}
+NOTE: This project is currently being worked on and if anyone wants to contribute to it, feel free to. It's very casual and mostly for practicing. {Current progress; functioning users purchasing tickets defined by the admin in the database and ability to delete
+and modify tickets. Future: Associate tickets with locations.}
 
 # Train application
 
