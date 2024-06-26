@@ -1,11 +1,13 @@
 from django.db import models
 from django.utils import timezone
+from locations.models import Locations
 
 class Tickets(models.Model):
     name = models.CharField(max_length=24)
     text = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     duration = models.IntegerField(help_text="Duration in days", default=1)
+    location = models.ForeignKey(Locations, on_delete=models.CASCADE, related_name='tickets', null=True, blank=True, default=1)
 
     def __str__(self):
         return self.name
