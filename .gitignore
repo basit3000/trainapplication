@@ -27,7 +27,6 @@ env/
 
 # Ignore Docker files
 .dockerignore
-Dockerfile
 
 # Ignore log files
 *.log
