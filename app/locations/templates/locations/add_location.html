@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Add a New Location</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Location</button>
+</form>
+<a href="{% url 'locations:list' %}">Back to locations</a>
+{% endblock %}
