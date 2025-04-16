@@ -33,6 +33,11 @@ and modify tickets. Future: Associate tickets with locations.}
     ```sh
     docker run -d -p 8000:8000 trainapplication
     ```
+    or if you want to make changes (live):
+
+    ```sh   
+    docker run -it --rm -v %cd%:/app -w /app/app -p 8000:8000 trainapplication
+    ```
 
 # Steps for Manual Django setup and to run the server:
 
