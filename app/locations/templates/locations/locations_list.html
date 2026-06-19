@@ -1,16 +1,22 @@
 {% extends "base.html" %}
 
+{% block title %}Locations{% endblock %}
+
 {% block content %}
-<h2>These are the available locations:</h2>
-    <ul>
-        {% for location in locations %}
-            <li>{{ location.name }}</li>
-        {% endfor %}
-    </ul>
+<h2>Available locations</h2>
+{% if locations %}
+<ul class="list-tiles">
+    {% for location in locations %}
+        <li>{{ location.name }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p class="muted">No locations listed yet.</p>
+{% endif %}
 
 {% if user.is_authenticated and user.is_staff %}
-    <p><a href="{% url 'locations:add' %}">Add a new location</a></p>
-{% endif %}   
- 
+<div class="actions">
+    <a href="{% url 'locations:add' %}" class="btn btn-primary">Add a new location</a>
+</div>
+{% endif %}
 {% endblock %}
-

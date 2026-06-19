@@ -1,4 +1,13 @@
-<html>
+{% extends "base.html" %}
+
+{% block title %}Authorized{% endblock %}
+
+{% block content %}
+<div class="card">
     <h1>Authorized</h1>
-    <p>Welcome user to your very own portal. You can access your tickets, subscriptions, and find out about trips.</p>
-</html>
+    <p>Welcome to your very own portal. You can access your tickets, subscriptions, and find out about trips.</p>
+    <div class="actions">
+        <a href="{% url 'profile' %}" class="btn btn-primary">Go to profile</a>
+    </div>
+</div>
+{% endblock %}

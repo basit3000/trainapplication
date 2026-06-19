@@ -1,6 +1,13 @@
 {% extends "base.html" %}
-{% block content %}
-<p> {{tickets.name}} </p>
-<a href="{% url 'tickets_delete' pk=tickets.id %}">Delete</a>
 
+{% block title %}{{ tickets.name }}{% endblock %}
+
+{% block content %}
+<div class="card card-narrow">
+    <h2>{{ tickets.name }}</h2>
+    <div class="actions">
+        <a href="{% url 'tickets_delete' pk=tickets.id %}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'tickets_list' %}" class="btn btn-secondary">Back to tickets</a>
+    </div>
+</div>
 {% endblock %}

@@ -33,10 +33,11 @@ and modify tickets. Future: Associate tickets with locations.}
     ```sh
     docker run -d -p 8000:8000 trainapplication
     ```
-    or if you want to make changes (live):
+    or if you want to make changes (live), mount the inner `app/` folder
+    (which contains `manage.py`) onto the image's working directory:
 
-    ```sh   
-    docker run -it --rm -v %cd%:/app -w /app/app -p 8000:8000 trainapplication
+    ```sh
+    docker run -it --rm -v "%cd%/app:/app" -p 8000:8000 trainapplication
     ```
 
 # Steps for Manual Django setup and to run the server:

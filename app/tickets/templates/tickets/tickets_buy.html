@@ -1,10 +1,14 @@
 {% extends "base.html" %}
 
+{% block title %}Buy tickets{% endblock %}
+
 {% block content %}
-    <h2>Buy tickets</h2>
+<div class="card card-narrow">
+    <h2>Buy a ticket</h2>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Buy Ticket</button>
+        <button type="submit" class="btn btn-primary">Buy ticket</button>
     </form>
+</div>
 {% endblock %}

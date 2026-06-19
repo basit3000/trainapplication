@@ -1,10 +1,19 @@
 {% extends "base.html" %}
 
+{% block title %}Tickets{% endblock %}
+
 {% block content %}
-<h2>These are the available tickets:</h2>
-    <ul>
-        {% for ticket in tickets %}
-            <li>{{ ticket.name }}</li>
-        {% endfor %}
-    </ul>
+<h2>Available tickets</h2>
+{% if tickets %}
+<ul class="list-tiles">
+    {% for ticket in tickets %}
+        <li>{{ ticket.name }}</li>
+    {% endfor %}
+</ul>
+<div class="actions">
+    <a href="{% url 'buy_tickets' %}" class="btn btn-primary">Buy a ticket</a>
+</div>
+{% else %}
+<p class="muted">No tickets available right now.</p>
+{% endif %}
 {% endblock %}

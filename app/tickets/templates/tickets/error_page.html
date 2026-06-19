@@ -1,15 +1,20 @@
 {% extends "base.html" %}
 
 {% block title %}Error{% endblock %}
+
 {% block content %}
-    <h1>Error</h1>
-    <p> {{ message }} </p>
+<div class="card card-narrow text-center">
+    <h1>&#9888; Something went wrong</h1>
+    <div class="alert alert-error">{{ message }}</div>
+    <p class="muted">Redirecting you to your profile&hellip;</p>
+    <a href="{% url 'profile' %}" class="btn btn-primary">Go to profile now</a>
+</div>
 {% endblock %}
 
 {% block extra_js %}
 <script type="text/javascript">
     setTimeout(function(){
-        window.location.href = "{% url 'profile' %}"; 
-    }, 5000); 
+        window.location.href = "{% url 'profile' %}";
+    }, 5000);
 </script>
 {% endblock %}

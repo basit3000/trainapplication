@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 
+{% block title %}Ticket deleted{% endblock %}
+
 {% block content %}
-  <h2>Success</h2>
-  <p>The ticket has been successfully deleted.</p>
-  <a href="{% url 'tickets_list' %}">Back to Tickets List</a>
+<div class="card card-narrow text-center">
+  <h2>&#9989; Ticket deleted</h2>
+  <p class="muted">The ticket has been successfully deleted.</p>
+  <a href="{% url 'tickets_list' %}" class="btn btn-primary">Back to tickets</a>
+</div>
 {% endblock %}

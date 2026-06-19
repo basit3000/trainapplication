@@ -1,12 +1,18 @@
 {% extends "base.html" %}
 
+{% block title %}Profile{% endblock %}
+
 {% block content %}
-<h2>User Profile</h2>
-<p>Welcome, {{ user.first_name }} {{ user.last_name }}!</p>
+<div class="card">
+    <h2>Welcome, {{ user.first_name }} {{ user.last_name }}!</h2>
+    <p class="muted">Manage your account and tickets from here.</p>
+</div>
 
 <h2>What would you like to do?</h2>
-<p>Check out our Home page <a href="{% url 'home' %}">here</a></p>
-<p>Change password: <a href="{% url 'password_change' %}">here</a></p>
-<p>View data: <a href="{% url 'data' %}"> here </a></p>
-<p>Buy ticket: <a href="{% url 'buy_tickets' %}">here</a></p>
+<div class="actions">
+    <a href="{% url 'home' %}" class="btn btn-primary">Home</a>
+    <a href="{% url 'buy_tickets' %}" class="btn btn-primary">Buy a ticket</a>
+    <a href="{% url 'data' %}" class="btn btn-secondary">View my data</a>
+    <a href="{% url 'password_change' %}" class="btn btn-secondary">Change password</a>
+</div>
 {% endblock %}

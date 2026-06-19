@@ -1,10 +1,18 @@
 {% extends "base.html" %}
 
+{% block title %}Cancel ticket{% endblock %}
+
 {% block content %}
-<form method = "POST">
-    {% csrf_token %}
-    <p>Are you sure you want to cancel "{{usertickets.ticket.name}}"?</p>
-    <p>This action can't be undone.</p>
-    <input type = "submit" value="Confirm"/>
-</form>
-{% endblock %} 
+<div class="card card-narrow">
+    <h2>Cancel ticket</h2>
+    <p>Are you sure you want to cancel "<strong>{{ usertickets.ticket.name }}</strong>"?</p>
+    <p class="muted">This action can't be undone.</p>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="actions">
+            <button type="submit" class="btn btn-danger">Confirm cancellation</button>
+            <a href="{% url 'data' %}" class="btn btn-secondary">Keep ticket</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

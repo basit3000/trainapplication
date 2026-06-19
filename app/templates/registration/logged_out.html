@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
+{% block title %}Logged out{% endblock %}
+
 {% block content %}
-<h2>You have been logged out</h2>
-<p>Thank you for visiting. Click <a href="{% url 'login' %}">here</a> to log in again.</p>
+<div class="card card-narrow text-center">
+    <h2>You have been logged out</h2>
+    <p class="muted">Thank you for visiting TrainGoApp.</p>
+    <a href="{% url 'login' %}" class="btn btn-primary">Log in again</a>
+</div>
 {% endblock %}

@@ -3,16 +3,34 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<h1>These are the available train ticket list</h1>
-    <ul>
-        {% for ticket in tickets %}
-            <li>{{ ticket.name }}</li>
-        {% endfor %}
-    </ul>
-<h2>Locations</h2>
-    <ul>
-        {% for location in locations %}
-            <li>{{ location.name }}</li>
-        {% endfor %}
-    </ul>
+<section class="hero">
+    <h1>Welcome aboard TrainGoApp</h1>
+    <p>Browse available train tickets, explore destinations, and manage your journeys all in one place.</p>
+    <div class="actions">
+        <a href="{% url 'buy_tickets' %}" class="btn btn-primary">Buy a ticket</a>
+        <a href="{% url 'locations:list' %}" class="btn btn-outline">View destinations</a>
+    </div>
+</section>
+
+<h2>Available tickets</h2>
+{% if tickets %}
+<ul class="list-tiles">
+    {% for ticket in tickets %}
+        <li>{{ ticket.name }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p class="muted">No tickets available right now.</p>
+{% endif %}
+
+<h2 class="mt-2">Locations</h2>
+{% if locations %}
+<ul class="list-tiles">
+    {% for location in locations %}
+        <li>{{ location.name }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p class="muted">No locations listed yet.</p>
+{% endif %}
 {% endblock %}

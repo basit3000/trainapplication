@@ -1,18 +1,50 @@
 {% extends "base.html" %}
 
+{% block title %}My data{% endblock %}
+
 {% block content %}
-    <h2>Your data:</h2>
-    <p>First name: {{ user.first_name }} </p>
-    <p>Last name: {{ user.last_name }} </p>
-    <p>Email: {{ user.email }}</p>
-    <p>Date of birth: {{ user.date_of_birth }}</p>
-    <p>Last accessed: {{ user.last_login }}</p>
-    <p>Tickets: </p>
-    <ul>
+<div class="card card-narrow">
+    <h2>Your details</h2>
+    <table class="table">
+        <tr><th>First name</th><td>{{ user.first_name }}</td></tr>
+        <tr><th>Last name</th><td>{{ user.last_name }}</td></tr>
+        <tr><th>Email</th><td>{{ user.email }}</td></tr>
+        <tr><th>Date of birth</th><td>{{ user.date_of_birth }}</td></tr>
+        <tr><th>Last accessed</th><td>{{ user.last_login }}</td></tr>
+    </table>
+</div>
+
+<h2>Your tickets</h2>
+{% if user_tickets %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ticket</th>
+            <th>Issued</th>
+            <th>Expires</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
         {% for user_ticket in user_tickets %}
-            <li>{{ user_ticket.ticket.name }} - Issue Date: {{ user_ticket.issue_date }} - Expiry Date: {{ user_ticket.expiry_date }} - <a href="{% url 'tickets_delete' pk=user_ticket.id %}">Delete ticket</a>
-        {% empty %}
-            <li>No ticket available.</li>
+        <tr>
+            <td>{{ user_ticket.ticket.name }}</td>
+            <td>{{ user_ticket.issue_date }}</td>
+            <td>{{ user_ticket.expiry_date }}</td>
+            <td>
+                {% if user_ticket.is_active %}
+                    <span class="badge badge-success">Active</span>
+                {% else %}
+                    <span class="badge badge-danger">Expired</span>
+                {% endif %}
+            </td>
+            <td><a href="{% url 'tickets_delete' pk=user_ticket.id %}" class="btn btn-danger btn-sm">Delete</a></td>
+        </tr>
         {% endfor %}
-    </ul>
+    </tbody>
+</table>
+{% else %}
+<p class="muted">No tickets available. <a href="{% url 'buy_tickets' %}">Buy your first ticket</a>.</p>
+{% endif %}
 {% endblock %}
